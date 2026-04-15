@@ -1,0 +1,7 @@
+export default Object.freeze({
+    BIODATA: 'BIODATA',
+    RESUME: 'RESUME',
+    COVER_LETTER: 'COVER_LETTER',
+    WEDDING_CARD: 'WEDDING_CARD',
+    INVITATION: 'INVITATION',
+});

@@ -1,0 +1,205 @@
+definitions:
+  securitySchemes:
+    tokenauth:
+      type: basic
+      description: bearer auth
+      name: Authorization
+      in: header
+    demouser:
+      type: basic
+
+  subscription:
+    required:
+      - planId
+      - qty
+      - purchaseRate
+      - markUpAmount
+      - terminationFee
+      - downPayment
+      - totalAmount
+      - dueAmount
+      - paidAmount
+    properties:
+      planId:
+        type: number
+      symbol:
+        type: string
+      qty:
+        type: number
+      purchaseRate:
+        type: number
+      markUpAmount:
+        type: number
+      terminationFee:
+        type: number
+      downPayment:
+        type: number
+      totalAmount:
+        type: number
+      dueAmount:
+        type: number
+      paidAmount:
+        type: number
+      coolingPeriodType:
+        type: string
+        example: "Day || Hours"
+      couponId:
+        type: string
+      subscriptionFee:
+        type: number
+      couponAmount:
+        type: number
+      totalEmi:
+        type: object
+        properties:
+          penaltyFee:
+            type: number
+          lateFee:
+            type: number
+          gracePeriod:
+            type: number
+          noOfEmi:
+            type: number
+          markUpFee:
+            type: number
+          downPaymentPer:
+            type: number
+          subscriptionFee:
+            type: number
+          terminationFee:
+            type: number
+          occerences:
+            type: string
+            example: "week || month || byWeek"
+
+  createbnplPlan:
+    required:
+      - coinId
+      - minQty
+      - maxQty
+      - totalEmi
+      - coolingPeriod
+      - coolingPeriodType
+    properties:
+      coinId:
+        type: number
+      minQty:
+        type: number
+      maxQty:
+        type: number
+      description:
+        type: string
+      totalEmi:
+        type: array
+        items:
+          type: object
+          required:
+            - penaltyFee
+            - lateFee
+            - gracePeriod
+            - noOfEmi
+            - downPaymentPer
+            - terminationFee
+            - markUpFee
+            - subscriptionFee
+          properties:
+            penaltyFee:
+              type: number
+            lateFee:
+              type: number
+            gracePeriod:
+              type: number
+            occurrences:
+              type: string
+              enum: [week, month, byWeek]
+            noOfEmi:
+              type: number
+            downPaymentPer:
+              type: number
+            terminationFee:
+              type: number
+            markUpFee:
+              type: number
+            subscriptionFee:
+              type: number
+      coolingPeriod:
+        type: number
+      coolingPeriodType:
+        type: string
+        enum: [Day, Hours]
+
+  updateBnplPlan:
+    required:
+      - id
+      - coinId
+      - minQty
+      - maxQty
+      - totalEmi
+      - coolingPeriod
+      - coolingPeriodType
+    properties:
+      id:
+        type: number
+        description: ID of the BNPL plan to update
+      coinId:
+        type: number
+        description: Coin ID associated with the BNPL plan
+      minQty:
+        type: number
+        description: Minimum quantity for the BNPL plan
+      maxQty:
+        type: number
+        description: Maximum quantity for the BNPL plan
+      description:
+        type: string
+        description: Description of the BNPL plan
+      totalEmi:
+        type: array
+        description: Total EMI details for the plan
+        items:
+          type: object
+          required:
+            - penaltyFee
+            - lateFee
+            - gracePeriod
+            - noOfEmi
+            - downPaymentPer
+            - terminationFee
+            - markUpFee
+            - subscriptionFee
+          properties:
+            penaltyFee:
+              type: number
+              description: Penalty fee for missed payments
+            lateFee:
+              type: number
+              description: Late fee for delayed payments
+            gracePeriod:
+              type: number
+              description: Grace period before fees apply
+            occurrences:
+              type: string
+              enum: [week, month, byWeek]
+              description: Occurrence period for EMI
+            noOfEmi:
+              type: number
+              description: Number of EMI installments
+            downPaymentPer:
+              type: number
+              description: Down payment percentage for this EMI
+            terminationFee:
+              type: number
+              description: Termination fee for the EMI
+            markUpFee:
+              type: number
+              description: Mark-up fee for the EMI
+            subscriptionFee:
+              type: number
+              description: Subscription fee for the EMI
+      coolingPeriod:
+        type: number
+        description: Cooling period before the plan starts
+      coolingPeriodType:
+        type: string
+        enum: [Day, Hours]
+        description: Unit of cooling period (Day or Hours)

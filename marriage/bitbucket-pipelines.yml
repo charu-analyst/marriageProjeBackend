@@ -1,0 +1,46 @@
+#order_book
+image: atlassian/default-image:2
+
+pipelines:
+  branches:
+    order_book:
+      - step:
+          name: Deploy stg nowory orderbook
+          script:
+            - pipe: atlassian/ssh-run:0.7.1
+              variables:
+                SSH_USER: $SSH_USER
+                SERVER: $SERVER_IP
+                COMMAND: "bash /var/www/script/orderbookapi.sh"
+            - echo "Script execution completed."
+#UAT
+#image: atlassian/default-image:2
+
+#pipelines:
+#  branches:
+#    UAT:
+#      - step:
+#          name: Deploy stg tarality
+#          script:
+#            - pipe: atlassian/ssh-run:0.7.1
+#              variables:
+#                SSH_USER: $SSH_USER
+#                SERVER: $SERVER_IP
+#                COMMAND: "bash /var/www/script/apitaralitynew.sh"
+#            - echo "Script execution completed."
+
+#SOCKET
+#image: atlassian/default-image:2
+
+#pipelines:
+#  branches:
+#    socket_staging:
+#      - step:
+#          name: Deploy socket tarality
+#          script:
+#            - pipe: atlassian/ssh-run:0.7.1
+#              variables:
+#                SSH_USER: $SSH_USER
+#                SERVER: $SERVER_IP
+#                COMMAND: "bash /var/www/script/sockettaralitynew.sh"
+#            - echo "Script execution completed."
