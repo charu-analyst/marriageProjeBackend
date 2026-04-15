@@ -8,7 +8,7 @@ import templateRoutes from '../api/v1/routes/templateRoutes.js';
 import purchaseRoutes from '../api/v1/routes/purchaseRoutes.js';
 
 const app = express();
-const PORT = global.gConfig.port || 8046;
+const PORT = global.gConfig.port ;
 
 // CORS Configuration
 const corsOptions = {
