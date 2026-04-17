@@ -12,7 +12,7 @@ const PORT = global.gConfig.port;
 
 // CORS Configuration
 const corsOptions = {
-  origin: ['http://localhost:5173', 'http://localhost:3000', 'http://localhost:8000', 'https://69e1c74fc82f741c75a28801--marriagebiodoc.netlify.app/'],
+  origin: ['http://localhost:5173', 'http://localhost:3000', 'http://localhost:8000', 'https://69e1c74fc82f741c75a28801--marriagebiodoc.netlify.app'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
