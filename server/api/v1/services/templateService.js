@@ -47,6 +47,12 @@ export const getAllTemplates = async (options = {}) => {
     };
 };
 
+export const getTemplates=async(query)=>{
+    const { category, search, page = 1, limit = 10, sort = '-createdAt' } = query;
+    
+    let filter = { isActive: true };
+    
+}
 /**
  * Get template by ID
  * @param {string} id - Template ID
@@ -284,7 +290,7 @@ export const getAllTemplatesAdmin = async (options = {}) => {
     const skip = (page - 1) * limit;
 
     let query = {};
-    
+
     if (search) {
         query.$or = [
             { title: { $regex: search, $options: 'i' } },
