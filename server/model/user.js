@@ -44,7 +44,6 @@ const userSchema = new mongoose.Schema(
         // Firebase / Google Sign-In fields
         googleId: {
             type: String,
-            sparse: true,
         },
         authProvider: {
             type: String,
@@ -113,8 +112,7 @@ const userSchema = new mongoose.Schema(
     }
 );
 
-// Index for email and googleId for faster lookups
-userSchema.index({ email: 1 });
+
 userSchema.index({ googleId: 1 });
 
 
